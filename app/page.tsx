@@ -2,7 +2,7 @@ import Image from "next/image"
 import Grid from "./ui/grid"
 
 
-const urlImgArray = Array(
+const urlList = Array(
   "https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-01.jpg",
   "https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-02.jpg",
   "https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-03.jpg",
@@ -17,7 +17,7 @@ const urlImgArray = Array(
 export default function Page() {
   return (
     <>
-      <Grid urlImgArray={urlImgArray}/>
+      <Grid urlList={urlList}/>
     </>
 
   )
