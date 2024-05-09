@@ -6,7 +6,11 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import NavbarMobile from './navbar-mobile'
 
 // If I envision the links changing, I can just pass these as props instead
-const navLinks = [
+export interface NavLink {
+    name: string;
+    href: string;
+}
+const navLinks: Array<NavLink> = [
     { name: 'Home', href: '#' },
     { name: 'Create', href: '#' },
     { name: 'Solve', href: '#' },
