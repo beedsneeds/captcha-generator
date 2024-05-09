@@ -18,10 +18,10 @@ function GridItem({ urlImg, selected, index, handleClick }: gridImg) {
       <Image
         src={urlImg}
         alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-        className={`rounded-lg bg-gray-100 ${selected[index] === true ? 'grayscale scale-[0.85] transition-all' : 'transition-all'}`}
+        className={`rounded-lg bg-gray-100 ${selected[index] === true ? 'border-blue-300 border-4 scale-[0.85] transition-all' : 'transition-all'}`}
         //  potental transitions: grayscale scale-90 transition-all / opacity-50 / border-lime-300 border-4 / 
-        width={600} // remove if images are local
-        height={600}
+        width={1200} // remove if images are local
+        height={1200}
         onClick={() => handleClick(index)}
         // alt is to onClick={onSquareClick} here and pass the args within Grid props
         //  like handleClick={() => handleclick(args)}, but I find it too long
