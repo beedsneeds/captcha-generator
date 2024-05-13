@@ -3,14 +3,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-
 type gridImg = {
   urlImg: string;
   selected: Array<boolean>;
   index: number;
   handleClick: any;
-}
-
+};
 
 function GridItem({ urlImg, selected, index, handleClick }: gridImg) {
   return (
@@ -18,8 +16,12 @@ function GridItem({ urlImg, selected, index, handleClick }: gridImg) {
       <Image
         src={urlImg}
         alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-        className={`rounded-lg bg-gray-100 ${selected[index] === true ? 'border-blue-300 border-4 scale-[0.85] transition-all' : 'transition-all'}`}
-        //  potental transitions: grayscale scale-90 transition-all / opacity-50 / border-lime-300 border-4 / 
+        className={`rounded-lg bg-gray-100 ${
+          selected[index] === true
+            ? "border-blue-300 border-4 scale-[0.85] transition-all"
+            : "transition-all"
+        }`}
+        //  potental transitions: grayscale scale-90 transition-all / opacity-50 / border-lime-300 border-4 /
         width={1200} // remove if images are local
         height={1200}
         onClick={() => handleClick(index)}
@@ -30,7 +32,6 @@ function GridItem({ urlImg, selected, index, handleClick }: gridImg) {
     </div>
   );
 }
-
 
 export default function Grid({ urlList }: { urlList: Array<string> }) {
   const [selected, setSelected] = useState(Array(9).fill(false));
@@ -46,6 +47,9 @@ export default function Grid({ urlList }: { urlList: Array<string> }) {
   return (
     <>
       <div className="flex flex-col justify-center items-center">
+        <p className="flex text-lg font-medium text-gray-900">
+          These are only placeholder images
+        </p>
         <div className="grid grid-cols-3 grid-rows-3 gap-1 sm:gap-2 sm:size-10/12 md:size-3/4 lg:size-4/6">
           {urlList.map((urlImg, index) => (
             <GridItem
@@ -58,7 +62,7 @@ export default function Grid({ urlList }: { urlList: Array<string> }) {
           ))}
           {/* <SingleImage /> */}
         </div>
-        <div className="mt-3">
+        {/* <div className="mt-3">
           <button
             type="button"
             className="text-sm font-semibold leading-6 text-gray-900"
@@ -71,7 +75,7 @@ export default function Grid({ urlList }: { urlList: Array<string> }) {
           >
             Submit
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );
@@ -91,4 +95,3 @@ function SingleImage() {
     </div>
   );
 }
-

@@ -11,10 +11,10 @@ export interface NavLink {
     href: string;
 }
 const navLinks: Array<NavLink> = [
-    { name: 'Home', href: '#' },
-    { name: 'Create', href: '#' },
-    { name: 'Solve', href: '#' },
-    { name: '1v1', href: '#' },
+    { name: 'Home', href: '/' },
+    { name: 'Create', href: '/create/' },
+    { name: 'Solve', href: '/solve/' },
+    { name: 'Versus', href: '#' },
 ]
 
 export default function MainLayout ({
@@ -38,7 +38,7 @@ export default function MainLayout ({
 
                     {/* Title bar */}
                     <div className="flex items-baseline justify-between border-b-2 border-gray-200 pb-6 pt-12">
-                        <h1 className="text-4xl font-bold tracking-tight text-gray-900">Goripi&apos;s home page</h1>
+                        <h1 className="text-4xl font-bold tracking-tight text-gray-900">Captchapractice, but prettier: through nextJS</h1>
 
                         {/* Navbar; mobile */}
                         <div className="flex items-center">

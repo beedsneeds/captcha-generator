@@ -15,7 +15,7 @@ const urlList = Array(
 
 export default function Page() {
   return (
-    <>
+    <>      
       <Grid urlList={urlList} />
     </>
   );
