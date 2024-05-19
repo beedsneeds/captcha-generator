@@ -26,7 +26,7 @@ export default function MainLayout({
 
   return (
     // <div className="px-1 bg-white">
-<div className="px-1 bg-white"> 
+<div className="px-1 bg-cream-200 min-h-screen"> 
       <div>
         <NavbarMobile
           navbarOpen={navbarOpen}
@@ -38,7 +38,7 @@ export default function MainLayout({
           {/* Title bar */}
           <div className="flex items-baseline justify-between border-b-2 border-gray-200 pb-6 pt-12">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              Captchapractice, but prettier: through nextJS
+              CaptchaGenerator, now on Next.js
             </h1>
 
             {/* Navbar; mobile */}
@@ -72,7 +72,7 @@ export default function MainLayout({
             </div>
 
             <div className="lg:col-span-3 ">
-              <div className="mx-auto max-w-7xl py-6 px-2 md:px-4 bg-cream-200 rounded-lg border ">
+              <div className="mx-auto max-w-7xl min-h-48 py-6 px-2 md:px-4 bg-cream-300 rounded-lg shadow-inner">
                 {/* Your content */}
                 {children}
               </div>

@@ -9,7 +9,7 @@ export default async function Page() {
   const listCaptchaPrompts = imgObjectList.map((imgObject: any) => (
     <li key={imgObject.pk}>
       <Link href={"/solve/" + imgObject.pk} className="underline">
-        {imgObject.prompt_text} {imgObject.slice_count}
+        {imgObject.prompt_text}
       </Link>
     </li>
   ));
