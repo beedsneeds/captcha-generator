@@ -1,15 +1,15 @@
+// This code should belong to a 'index' page, rather than main page of solve
 
+import Link from "next/link";
 
 async function getCaptchaList() {
   const res = await fetch(
     `http://127.0.0.1:10000/captchapractice/api/captcha/?format=json`,
+    //   `https://hellointernet.onrender.com/captchapractice/api/captcha/?format=json`,
+
     { next: { revalidate: 60 } }
   );
-  // const res = await fetch(
-  //   `https://hellointernet.onrender.com/captchapractice/api/captcha/?format=json`,
-  //   { next: { revalidate: 60 } }
-  // );
-  // const res = await fetch(`https://catfact.ninja/fact`)
+
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
@@ -19,21 +19,15 @@ async function getCaptchaList() {
 }
 
 export default async function Page() {
-  const op = await getCaptchaList();
+  const imgObjectList = await getCaptchaList();
 
-
-
-  const listImages = op.map((op: any) => (
-    <li key={op.pk}>
-      <a href={"/solve/" + op.pk} className="underline">{op.prompt_text}</a>
+  const listCaptchaPrompts = imgObjectList.map((imgObject: any) => (
+    <li key={imgObject.pk}>
+      <Link href={"/solve/" + imgObject.pk} className="underline">
+        {imgObject.prompt_text} {imgObject.slice_count}
+      </Link>
     </li>
   ));
-
-  // console.log(op);
-  // console.log("we reaching this");
-  // op.map((op : any) => (
-  //   console.log(op.prompt_text)
-  // ))
 
   return (
     <>
@@ -47,10 +41,7 @@ export default async function Page() {
         </a>{" "}
         page where you&apos;ll solve a series of 4 captcha{" "}
       </p>
-      {/* <p>
-        {op.fact}
-      </p> */}
-      {listImages}
+      {listCaptchaPrompts}
     </>
   );
 }
