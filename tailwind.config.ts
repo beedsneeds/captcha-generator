@@ -17,10 +17,14 @@ const config: Config = {
       colors: {
         // the ones after cream-300 just become grayer. Make some changes eventually
         'cream': {
-          300: '#FAFAF0',
-          400: '#f7f7ed',
-          600: '#F0F0E6',
-          700: '#E8E8DF',
+          100: '#fdfdfb',
+          200: '#fefefb',
+          300: '#fcfcf7',
+          400: '#fbfbf4',
+          500: '#fafaf0',
+          600: '#f9f9ec',
+          800: '#f9f6ec',
+          900: '#f0f0d1',
         },
       },
     },

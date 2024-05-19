@@ -16,7 +16,7 @@ function GridItem({ urlImg, selected, index, handleClick }: gridImg) {
       <Image
         src={urlImg}
         alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-        className={`rounded-lg bg-gray-100 ${
+        className={`rounded-md bg-gray-100 ${
           selected[index] === true
             ? "border-blue-300 border-4 scale-[0.85] transition-all"
             : "transition-all"
@@ -47,9 +47,6 @@ export default function Grid({ urlList }: { urlList: Array<string> }) {
   return (
     <>
       <div className="flex flex-col justify-center items-center">
-        <p className="flex text-lg font-medium text-gray-900">
-          These are only placeholder images
-        </p>
         <div className="grid grid-cols-3 grid-rows-3 gap-1 sm:gap-2 sm:size-10/12 md:size-3/4 lg:size-4/6">
           {urlList.map((urlImg, index) => (
             <GridItem
@@ -81,17 +78,3 @@ export default function Grid({ urlList }: { urlList: Array<string> }) {
   );
 }
 
-function SingleImage() {
-  return (
-    <div>
-      <Image
-        src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-01.jpg"
-        alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-        className="rounded-lg bg-gray-100"
-        width={600}
-        height={600}
-        onClick={() => console.log("clicked")}
-      />
-    </div>
-  );
-}
