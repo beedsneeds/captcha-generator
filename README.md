@@ -1,2 +1,2 @@
-
-Here's the [backend](https://github.com/beedsneeds/HelloInternet), built off of Django. Currently redesigning the interactions between the front and back end
+Hosted on Vercel [here](https://captcha-generator-mashiro.vercel.app/).
+Frontend repo for the same [project](https://github.com/beedsneeds/HelloInternet), built on Django. Currently a WIP
