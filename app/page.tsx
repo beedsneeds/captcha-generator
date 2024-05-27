@@ -23,7 +23,7 @@ export default function Page() {
           Hello there! This site is still a work in progress. I&apos;ve made <em>some </em> 
           progress on the <Link href={`/solve/`} className="underline">&apos;solve&apos;</Link> functionality. 
           For a feature-complete implementation, check out the Django site on&nbsp;
-          <Link href="https://hellointernet.onrender.com/captchapractice/" className="underline">Render</Link>.
+          <a href="https://hellointernet.onrender.com/captchapractice/" className="underline">Render</a>.
          </p>
       </div>
 

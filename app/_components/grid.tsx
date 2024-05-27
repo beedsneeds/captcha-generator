@@ -33,7 +33,7 @@ function GridItem({ urlImg, selected, index, handleClick }: gridImg) {
   );
 }
 
-export default function Grid({ urlList }: { urlList: Array<string> }) {
+export default function Grid({ urlList, prompt_text }: { urlList: Array<string>; prompt_text:string }) {
   const [selected, setSelected] = useState(Array(9).fill(false));
 
   function handleClick(index: number) {
@@ -46,6 +46,13 @@ export default function Grid({ urlList }: { urlList: Array<string> }) {
 
   return (
     <>
+      <p className="flex text-lg font-medium text-gray-900 justify-center mb-6">
+        {prompt_text}
+      </p>
+      <form action="">
+        
+
+      </form>
       <div className="flex flex-col justify-center items-center">
         <div className="grid grid-cols-3 grid-rows-3 gap-1 sm:gap-2 sm:size-10/12 md:size-3/4 lg:size-4/6">
           {urlList.map((urlImg, index) => (

@@ -12,11 +12,7 @@ export default async function Page({ params }: { params: { img_id: number } }) {
 
   return (
     <>
-      <p className="flex text-lg font-medium text-gray-900 justify-center">
-        {imgObject.prompt_text}
-      </p>
-      <br></br>
-      <Grid urlList={urlList} />
+      <Grid urlList={urlList} prompt_text={imgObject.prompt_text} />
     </>
   );
 }

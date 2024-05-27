@@ -33,3 +33,7 @@ body {
     text-wrap: balance;
   }
 } */
+
+.test-class-for-css-docstrings {
+  padding: 0 1rem;
+}
