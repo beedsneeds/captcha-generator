@@ -1,7 +1,5 @@
 import Grid from "@/app/_components/grid";
-import { getCaptcha } from "@/app/_data/api";
-
-
+import { getCaptcha } from "@/app/_data/drf-api";
 
 export default async function Page({ params }: { params: { img_id: number } }) {
   const imgObject = await getCaptcha(params.img_id);

@@ -1,7 +1,7 @@
 // This code should belong to an 'index' page, rather than main page of solve
 
 import Link from "next/link";
-import { getCaptchaList } from "../_data/api";
+import { getCaptchaList } from "../_data/drf-api";
 
 export default async function Page() {
   const imgObjectList = await getCaptchaList();
