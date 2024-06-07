@@ -1,6 +1,6 @@
 "use client";
 
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import { PhotoIcon } from "@heroicons/react/24/solid";
 import { SetStateAction, useState } from "react";
 import {
   ButtonSubmit,
@@ -8,7 +8,12 @@ import {
 } from "../_components/utility-components";
 
 import Image from "next/image";
-import ImgUploadField from "../_components/img-upload";
+
+// https://nextjs.org/docs/messages/react-hydration-error
+import dynamic from "next/dynamic";
+const NoSSRImgUploadField = dynamic(() => import("../_components/img-upload"), {
+  ssr: false,
+});
 
 export default function Page() {
   // Change the comments out when not testing layout
@@ -38,6 +43,15 @@ export default function Page() {
       )}
 
       {twoSubmitted && <FormPartThree />}
+
+      <Image
+        src="https://ucarecdn.com/a4f5bc6a-e62c-4de9-a4dc-e8850cfdfcd0/WhatsAppImage20230326at222822.jpeg"
+        alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+        className="rounded-md bg-gray-100"
+        //  potental transitions: grayscale scale-90 transition-all / opacity-50 / border-lime-300 border-4 /
+        width={1200} // remove if images are local
+        height={1200}
+      />
     </>
   );
 }
@@ -59,7 +73,7 @@ function FormPartOne({ submitState, setSubmitState }: ISubmitState) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mb-10">
+    <form onSubmit={handleSubmit} className="mb-6">
       <div className="border-b border-gray-900/10 pb-8">
         <h2 className="text-base font-semibold leading-7 text-gray-900">
           Part 1: Upload your image
@@ -68,7 +82,7 @@ function FormPartOne({ submitState, setSubmitState }: ISubmitState) {
             General help text
           </p> */}
 
-        <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-6 gap-x-6 gap-y-8 ">
           {/* <div className="sm:col-span-4">
             <label
               htmlFor="street-address"
@@ -88,80 +102,33 @@ function FormPartOne({ submitState, setSubmitState }: ISubmitState) {
             </div>
           </div> */}
 
-          <div className="col-span-full">
-
-
-            <div className="mt-2 flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-              <div className="text-center">
-                <PhotoIcon
-                  className="mx-auto h-12 w-12 text-gray-500"
-                  aria-hidden="true"
-                />
-                <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                <ImgUploadField setImageUrl={setImageUrl} />
-
+          <div className="col-span-full ">
+            <div className="mt-2 flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 p-1 md:p-2">
+              {!imageUrl && (
+                <div className="text-center">
+                  <PhotoIcon
+                    className="mx-auto h-12 w-12 text-gray-500"
+                    aria-hidden="true"
+                  />
+                  <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                    <NoSSRImgUploadField setImageUrl={setImageUrl} />
+                  </div>
+                  <p className="text-xs leading-5 text-gray-600">
+                    JPG up to 10MB
+                  </p>
                 </div>
-                <p className="text-xs leading-5 text-gray-600">
-                  JPG up to 10MB
-                </p>
-              </div>
-            </div>
+              )}
 
-
-            {imageUrl && (
-              <Image
-                src={`${imageUrl}`}
-                alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-                className="rounded-md bg-gray-100"
-                //  potental transitions: grayscale scale-90 transition-all / opacity-50 / border-lime-300 border-4 /
-                width={1200} // remove if images are local
-                height={1200}
-              />
-            )}
-
-            <label
-              htmlFor="cover-photo"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Captcha candidate
-            </label>
-
-            <Image
-              src="https://ucarecdn.com/a4f5bc6a-e62c-4de9-a4dc-e8850cfdfcd0/WhatsAppImage20230326at222822.jpeg"
-              alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-              className="rounded-md bg-gray-100"
-              //  potental transitions: grayscale scale-90 transition-all / opacity-50 / border-lime-300 border-4 /
-              width={1200} // remove if images are local
-              height={1200}
-            />
-
-            <p className="text-sm leading-6 text-gray-600">Make sure its 1:1</p>
-            <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-              <div className="text-center">
-                <PhotoIcon
-                  className="mx-auto h-12 w-12 text-gray-300"
-                  aria-hidden="true"
+              {imageUrl && (
+                <Image
+                  src={`${imageUrl}`}
+                  alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+                  className="rounded-md bg-gray-100 transition-all"
+                  //  potental transitions: grayscale scale-90 transition-all / opacity-50 / border-lime-300 border-4 /
+                  width={1200}
+                  height={1200}
                 />
-                <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                  <label
-                    htmlFor="file-upload"
-                    className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                  >
-                    <span>Upload a file</span>
-                    <input
-                      id="file-upload"
-                      name="file-upload"
-                      type="file"
-                      disabled={submitState}
-                      className="sr-only"
-                    />
-                  </label>
-                  <p className="pl-1">or drag and drop</p>
-                </div>
-                <p className="text-xs leading-5 text-gray-600">
-                  PNG or JPG up to 10MB
-                </p>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -188,7 +155,7 @@ function FormPartTwo({ submitState, setSubmitState }: ISubmitState) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mb-10">
+    <form onSubmit={handleSubmit} className="mb-6">
       <div className="border-b border-gray-900/10 pb-8">
         <h2 className="text-base font-semibold leading-7 text-gray-900">
           Part 2: Pick from dropdown lists
@@ -202,31 +169,16 @@ function FormPartTwo({ submitState, setSubmitState }: ISubmitState) {
             >
               This was generated by the object detection alg
             </label>
-            <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-              <div className="text-center">
-                <PhotoIcon
-                  className="mx-auto h-12 w-12 text-gray-300"
-                  aria-hidden="true"
-                />
-                <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                  <label
-                    htmlFor="file-upload"
-                    className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                  >
-                    <span>Upload a file</span>
-                    <input
-                      id="file-upload"
-                      name="file-upload"
-                      type="file"
-                      className="sr-only"
-                    />
-                  </label>
-                  <p className="pl-1">or drag and drop</p>
-                </div>
-                <p className="text-xs leading-5 text-gray-600">
-                  PNG or JPG up to 10MB
-                </p>
-              </div>
+
+            <div className="mt-2 flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 p-1 md:p-2">
+              <Image
+                src="https://ucarecdn.com/a4f5bc6a-e62c-4de9-a4dc-e8850cfdfcd0/WhatsAppImage20230326at222822.jpeg"
+                alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+                className="rounded-md bg-gray-100"
+                //  potental transitions: grayscale scale-90 transition-all / opacity-50 / border-lime-300 border-4 /
+                width={1200} // remove if images are local
+                height={1200}
+              />
             </div>
           </div>
 

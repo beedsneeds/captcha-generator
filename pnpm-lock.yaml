@@ -17,6 +17,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.4.2
         version: 3.4.2(react-hook-form@7.51.5(react@18.3.1))
+      '@uploadcare/blocks':
+        specifier: 0.42.1
+        version: 0.42.1(bufferutil@4.0.8)(utf-8-validate@6.0.3)
       '@uploadcare/react-uploader':
         specifier: ^0.5.3
         version: 0.5.3(@types/react@18.3.1)(bufferutil@4.0.8)(utf-8-validate@6.0.3)
@@ -584,6 +587,9 @@ packages:
 
   '@uploadcare/blocks@0.39.1':
     resolution: {integrity: sha512-WdjlUYCeuaju83ImELIVsrLlZpi6IIWidnh+/LfIiX8ht1KJGH9DgK7ekoUyWxjE8ggwnPNIz4xnMKmIGlow7w==}
+
+  '@uploadcare/blocks@0.42.1':
+    resolution: {integrity: sha512-wGAmbwRIKcvkE7TaylHdOYVY79960bBViVHJtQn39cKB/Jr8S+4M3HHSUa80UFqlVQ+T6Fib56zzsC3ncFtM+A==}
 
   '@uploadcare/image-shrink@6.14.1':
     resolution: {integrity: sha512-r3uu+9xsgqNqL5hvBya7RDDQVPMpTF12C1MRN80O1H6ITVvWLfngtmUbP44qg7YhAraLoynDJlkmHMiHanCw0w==}
@@ -2530,6 +2536,15 @@ snapshots:
   '@ungap/structured-clone@1.2.0': {}
 
   '@uploadcare/blocks@0.39.1(bufferutil@4.0.8)(utf-8-validate@6.0.3)':
+    dependencies:
+      '@symbiotejs/symbiote': 1.11.7
+      '@uploadcare/image-shrink': 6.14.1
+      '@uploadcare/upload-client': 6.14.1(bufferutil@4.0.8)(utf-8-validate@6.0.3)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@uploadcare/blocks@0.42.1(bufferutil@4.0.8)(utf-8-validate@6.0.3)':
     dependencies:
       '@symbiotejs/symbiote': 1.11.7
       '@uploadcare/image-shrink': 6.14.1

@@ -1,6 +1,7 @@
-import React, { SetStateAction } from "react";
+import React, { SetStateAction, useRef, useEffect } from "react";
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
 import "@uploadcare/react-uploader/core.css";
+
 
 // onDoneClick={(e) => {
 //     setImageUrl(e.allEntries[0].cdnUrl);
@@ -11,11 +12,13 @@ export default function ImgUploadField({
 }: {
   setImageUrl: React.Dispatch<SetStateAction<string | null>>;
 }) {
+    
+
   return (
     <div className="">
       <FileUploaderRegular
         ctxName="my-uploader"
-        pubkey="854469b761dcd84c14e8"
+        pubkey="83e6af70d75ab66735de"
         maxLocalFileSizeBytes={10000000}
         multiple={false}
         imgOnly={true}
@@ -29,6 +32,7 @@ export default function ImgUploadField({
         }}
         className="text-gray-900 font-medium"
       />
+
     </div>
   );
 }
