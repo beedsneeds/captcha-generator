@@ -22,6 +22,8 @@ export async function getCaptcha(img_id: number) {
 export async function getCaptchaList() {
   const apiURL = process.env.CAPTCHA_API_URL
 
+
+
   const res = await fetch(
     // `http://127.0.0.1:10000/captchapractice/api/captcha/?format=json`,
     `${apiURL}/captchapractice/api/captcha/?format=json`,
@@ -33,6 +35,5 @@ export async function getCaptchaList() {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
-
   return res.json();
 }

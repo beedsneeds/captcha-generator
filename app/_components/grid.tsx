@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { ButtonSecondary, ButtonSubmit } from "./utility-components";
 
 type gridImg = {
   urlImg: string;
@@ -33,7 +34,13 @@ function GridItem({ urlImg, selected, index, handleClick }: gridImg) {
   );
 }
 
-export default function Grid({ urlList, prompt_text }: { urlList: Array<string>; prompt_text:string }) {
+export default function Grid({
+  urlList,
+  prompt_text,
+}: {
+  urlList: Array<string>;
+  prompt_text: string;
+}) {
   const [selected, setSelected] = useState(Array(9).fill(false));
 
   function handleClick(index: number) {
@@ -41,20 +48,22 @@ export default function Grid({ urlList, prompt_text }: { urlList: Array<string>;
     newSelected[index] = !newSelected[index];
     setSelected(newSelected);
     // console.log("clicked " + index);
-    // console.log(newSelected);
+    console.log(newSelected);
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log("submitted!");
+    console.log(selected);
   }
 
   return (
-    <>
-      <p className="flex text-lg font-medium text-gray-900 justify-center mb-6">
-        {prompt_text}
-      </p>
-      <form action="">
-        
-
-      </form>
-      <div className="flex flex-col justify-center items-center">
-        <div className="grid grid-cols-3 grid-rows-3 gap-1 sm:gap-2 sm:size-10/12 md:size-3/4 lg:size-4/6">
+    <div className="flex justify-center items-center">
+      <form onSubmit={handleSubmit} className="max-w-lg">
+        <p className="text-lg font-medium text-gray-900 justify-start mb-3">
+          {prompt_text}
+        </p>
+        <div className="grid grid-cols-3 grid-rows-3 gap-1 sm:gap-2">
           {urlList.map((urlImg, index) => (
             <GridItem
               key={index}
@@ -64,24 +73,12 @@ export default function Grid({ urlList, prompt_text }: { urlList: Array<string>;
               handleClick={handleClick}
             />
           ))}
-          {/* <SingleImage /> */}
         </div>
-        {/* <div className="mt-3">
-          <button
-            type="button"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Alt button
-          </button>
-          <button
-            type="button"
-            className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 self-center"
-          >
-            Submit
-          </button>
-        </div> */}
-      </div>
-    </>
+        <div className="flex items-center justify-end gap-x-6 mt-3">
+          <ButtonSecondary buttonText="Reset" />
+          <ButtonSubmit disabledState={false} buttonText="Continue" />
+        </div>
+      </form>
+    </div>
   );
 }
-

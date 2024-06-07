@@ -5,7 +5,6 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 import NavbarMobile from "./navbar-mobile";
 
-
 // If I envision the links changing, I can just pass these as props instead
 export interface NavLink {
   name: string;
@@ -27,17 +26,15 @@ export default function MainLayout({
 
   return (
     // <div className="px-1 bg-white">
-<div className="px-1 bg-cream-200 min-h-screen"> 
+    <div className="px-1 bg-cream-200 min-h-screen">
       <div>
-
-        
         <NavbarMobile
           navbarOpen={navbarOpen}
           setNavbarOpen={setNavbarOpen}
           navLinks={navLinks}
         />
 
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Title bar */}
           <div className="flex items-baseline justify-between border-b-2 border-gray-200 pb-6 pt-12">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
