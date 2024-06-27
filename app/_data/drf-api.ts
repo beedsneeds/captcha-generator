@@ -22,8 +22,6 @@ export async function getCaptcha(img_id: number) {
 export async function getCaptchaList() {
   const apiURL = process.env.CAPTCHA_API_URL
 
-
-
   const res = await fetch(
     // `http://127.0.0.1:10000/captchapractice/api/captcha/?format=json`,
     `${apiURL}/captchapractice/api/captcha/?format=json`,
@@ -37,3 +35,14 @@ export async function getCaptchaList() {
   }
   return res.json();
 }
+
+export async function fetchCsrfToken(){
+  try {
+    const response = await fetch("http://127.0.0.1:8000/csrf/");
+    const data = await response.json();
+    return data.csrfToken
+    } catch (error) {
+    console.error("Error fetching CSRF token:", error);
+  }
+}
+

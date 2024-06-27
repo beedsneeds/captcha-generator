@@ -1,3 +1,15 @@
+import { cookies } from "next/headers";
+import { Cookies } from "react-cookie";
+
+export function CSRFToken(){
+  return (
+    <input 
+      type="hidden"
+      value=""
+    />
+  )
+}
+
 // add a handleSubmit prop
 export function ButtonSubmit({
   disabledState,

@@ -8,11 +8,11 @@ import "@uploadcare/react-uploader/core.css";
 //   console.log(e);
 // }} is dependant on the object returned. Which is very likely to change as UploadCare is still in beta
 export default function ImgUploadField({
-  setImageUrl,
+  setImageUrl, setImageName
 }: {
   setImageUrl: React.Dispatch<SetStateAction<string | null>>;
+  setImageName: React.Dispatch<SetStateAction<string>>;
 }) {
-    
 
   return (
     <div className="">
@@ -28,7 +28,8 @@ export default function ImgUploadField({
         onFileUploadSuccess={(e) => {}}
         onDoneClick={(e) => {
           setImageUrl(e.allEntries[0].cdnUrl);
-          //   console.log(e);
+          setImageName(e.allEntries[0].name);
+          console.log(e);
         }}
         className="text-gray-900 font-medium"
       />
